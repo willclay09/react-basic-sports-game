@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Basic Sports Game</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        function App (props) {
+       
+    class Team extends React.Component {
+        constructor( props){
+            super( props)
+
+            this.state = {
+               lakersShotsTaken: state.lakersShotsTaken = 0,
+               rocketsShotsTaken: state.rocketsShotsTaken = 0,
+               lakersGoals: state.lakersGoals = 0,
+               rocketsGoals: state.rocketsGoals = 0,
+               lakersLogo: state.lakersLogo = "",
+               rocketsLogo: state.rocketsLogo = ""
+            }
+            this.lakers = this.lakers.bind(this)
+            this.rockets = this.rockets.bind(this)
+        }
+        lakers(event){
+            this.setState((state,props)=>(
+                {lakersShotsTaken: state.lakersShotsTaken + 1}
+            ))
+            if(Math.random() > .5){
+                this.setState((state, props)=>(
+                    {lakersGoals: state.lakersGoals + 1}
+                ))
+            }
+        }
+
+        rockets(event){
+            this.setState((state, props)=>(
+                {rocketsShotsTaken: state.rocketsShotsTaken + 1}
+            ))
+            if(Math.random() > .5){
+                this.setState((state, props)=>(
+                    {rocketsGoals: state.rocketsGoals + 1}
+                ))
+            }
+        }
+        render(){
+            <div>
+                <button onClick={this.lakers}>ShotsTaken (+)</button>
+                <button onClick= {this.rockets}>ShotsTaken (+)</button>
+            </div>   
+            return (
+     <div>
+      <h1>Welcome to the Sports Game starter!</h1>
+      <em>This file represents the way your code should look after completing the <strong>Setup</strong> steps in the instructions.</em>
+    </div>
+  )
+        }
+    }
+    
+        }
+
+        const element = (
+            <div>
+                <App/>,
+                <Team/>
+            </div>
+         )
+        ReactDOM.render(
+            element,
+            document.getElementById('root')
+)
+    </script>
+</body>
+</html>
