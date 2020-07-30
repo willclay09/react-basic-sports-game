@@ -11,72 +11,96 @@
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
+    
     <script type="text/babel">
 
-        function App (props) {
+class Team extends React.Component {
+    constructor( props){
+        super( props)
+
+        this.state = {
+          shots: 0,
+          score: 0
+        }
+        this.shotSound = new Audio('./Back+Board.wav')
+        this.scoreSound = new Audio('./Swish.wav')
+    }
+   shotHandler =(event) =>{
+       let score = this.state.score
+        this.shotSound.play()
+
+        if(Math.random() > .5){
+                score += 1
+            setTimeout(() => {
+                this.scoreSound.play()
+            }, 200)
+               
+        }
+        this.setState((state, props)=>(
+            {shots: state.shots + 1,
+                score
+             } ))
        
-    class Team extends React.Component {
-        constructor( props){
-            super( props)
+    }
+    render(){
+        let shotPercentageDiv
 
-            this.state = {
-               lakersShotsTaken: state.lakersShotsTaken = 0,
-               rocketsShotsTaken: state.rocketsShotsTaken = 0,
-               lakersGoals: state.lakersGoals = 0,
-               rocketsGoals: state.rocketsGoals = 0,
-               lakersLogo: state.lakersLogo = "",
-               rocketsLogo: state.rocketsLogo = ""
-            }
-            this.lakers = this.lakers.bind(this)
-            this.rockets = this.rockets.bind(this)
-        }
-        lakers(event){
-            this.setState((state,props)=>(
-                {lakersShotsTaken: state.lakersShotsTaken + 1}
-            ))
-            if(Math.random() > .5){
-                this.setState((state, props)=>(
-                    {lakersGoals: state.lakersGoals + 1}
-                ))
-            }
-        }
-
-        rockets(event){
-            this.setState((state, props)=>(
-                {rocketsShotsTaken: state.rocketsShotsTaken + 1}
-            ))
-            if(Math.random() > .5){
-                this.setState((state, props)=>(
-                    {rocketsGoals: state.rocketsGoals + 1}
-                ))
-            }
-        }
-        render(){
-            <div>
-                <button onClick={this.lakers}>ShotsTaken (+)</button>
-                <button onClick= {this.rockets}>ShotsTaken (+)</button>
-            </div>   
-            return (
-     <div>
-      <h1>Welcome to the Sports Game starter!</h1>
-      <em>This file represents the way your code should look after completing the <strong>Setup</strong> steps in the instructions.</em>
+if (this.state.shots) {
+  const shotPercentage =Math.round((this.state.score / this.state.shots) * 100)
+  shotPercentageDiv = (
+    <div>
+      <strong>Shooting %:</strong> {shotPercentage}
     </div>
   )
-        }
-    }
-    
-        }
-
-        const element = (
-            <div>
-                <App/>,
-                <Team/>
+} 
+        return (
+           
+        <div className='Team'>
+            <h2>{this.props.name}</h2>
+           <div className='indentity'>
+            <img src={this.props.logo} alt={this.props.name}/>
+           </div>
+           <div>
+            <strong>Shots:</strong> {this.state.shots}
             </div>
+
+         <div>
+            <strong>Score:</strong> {this.state.score}
+         </div>
+         {shotPercentageDiv}
+         <button onClick={this.shotHandler}>Shoot</button>
+        </div>
+      
          )
-        ReactDOM.render(
-            element,
-            document.getElementById('root')
+    }
+}
+
+function Game(props){
+    return (
+    <div className="Game">
+        <h1 className='Arena'>Welcome to {props.venue}</h1>
+    <Team name= 'lakersTeam' logo="./assets/images/lakers.png" />
+            <div className="versus">
+                <h1>VS</h1>
+            </div>   
+            <Team name= 'rocketsTeam' logo="./assets/images/rockets.png" />
+        </div>
+    )    
+}
+
+function App (props) {
+    return (
+        <div className='App'>
+            <Game venue="Staple Center" />
+            <Game venue="Toyota Center" />
+        </div>
+     )
+    }
+
+   
+    ReactDOM.render(
+        <App />,
+        document.getElementById('root')
 )
     </script>
 </body>
