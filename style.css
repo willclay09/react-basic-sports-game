@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+@font-face {
+  font-family: "Score Board";
+  src: url('https://cdn.jsdelivr.net/gh/dteirney/trains.maxx.co.nz/fonts/scoreboard/scoreboard-webfont.eot');
+  src: url('https://cdn.jsdelivr.net/gh/dteirney/trains.maxx.co.nz/fonts/scoreboard/scoreboard-webfont.eot') format('embedded-opentype'),
+       url('https://cdn.jsdelivr.net/gh/dteirney/trains.maxx.co.nz/fonts/scoreboard/scoreboard-webfont.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/dteirney/trains.maxx.co.nz/fonts/scoreboard/scoreboard-webfont.ttf') format('truetype'),
+       url('https://cdn.jsdelivr.net/gh/dteirney/trains.maxx.co.nz/fonts/scoreboard/scoreboard-webfont.svg') format('svg');
+}
+@font-face {
+  font-family: "againtsregular";
+  src: url('https://cdn.jsdelivr.net/gh/max-barry/demo.vhs/src/fonts/againts-webfont.eot');
+  src: url('https://cdn.jsdelivr.net/gh/max-barry/demo.vhs/src/fonts/againts-webfont.eot') format('embedded-opentype'),
+       url('https://cdn.jsdelivr.net/gh/max-barry/demo.vhs/src/fonts/againts-webfont.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/max-barry/demo.vhs/src/fonts/againts-webfont.ttf') format('truetype'),
+       url('https://cdn.jsdelivr.net/gh/max-barry/demo.vhs/src/fonts/againts-webfont.svg') format('svg');
+}
+
 *{
     box-sizing: border-box;
 }
@@ -5,6 +23,34 @@ body{
     background-image: url(https://4.imimg.com/data4/CW/WO/MY-7887487/indoor-basketball-court-500x500.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+}
+.ScoreBoard {
+  display: flex;
+  justify-content: center;
+  font-family: "Score Board", sans-serif;
+  text-align: center;
+  background: #2c2c2c;
+  color: #fd8049;
+  text-shadow: 0 0 3px #fd8049;
+  padding: 1rem 0;
+  border-radius: 2rem;
+  border-style: groove;
+  border-color: rgb(222, 236, 15);
+  border-width: 8px;
+}
+
+.ScoreBoard h3 {
+margin: 0;
+}
+
+.ScoreBoard .teamStats {
+flex: 1;
+}
+.Game {
+  text-align: center;
 }
 .Team {
     display: flex;
@@ -24,6 +70,13 @@ body{
   .Team img {
     max-width: 200px;
   }
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: royalblue;
+    text-shadow:2px 2px 5px black;
+  }
   .versus {
     display: flex;
     flex-direction: column;
@@ -31,15 +84,32 @@ body{
   }
   
   .versus h1 {
-    font-family: againtsregular, oswald, sans-serif;
     font-size: 500%;
     color: #fc0;
-    text-shadow: 2px 2px 0 black;
+    text-shadow: 2px 2px 10px rgb(231, 13, 42);
   }
   .Arena{
     text-align: center;
-    font-family: againtsregular, oswald, sans-serif;
     font-size: 250%;
     color: #fc0;
-    text-shadow: 2px 2px 0 black;
+    text-shadow: 2px 2px 5px red;
+  }
+  button {
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: yellow;
+    border: 0;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    box-shadow: 2px 2px 0 black;
+    margin-bottom: 1rem;
+  }
+  .resets{
+    color:slateblue;
+  }
+  .resetButton{
+    color: red;
+    outline-style: inset;
   }
